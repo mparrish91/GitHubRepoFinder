@@ -110,48 +110,37 @@
     UILayoutGuide *starMargins = self.starView.layoutMarginsGuide;
     UILayoutGuide *forkMargins = self.forkView.layoutMarginsGuide;
 
-    self.starsLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.starsLabel.leadingAnchor constraintEqualToAnchor:starMargins.leadingAnchor].active = YES;
-    [self.starsLabel.trailingAnchor constraintEqualToAnchor:starMargins.trailingAnchor].active = YES;
-    [self.starsLabel.bottomAnchor constraintEqualToAnchor:starMargins.bottomAnchor].active = YES;
+
     
     self.starImageView.translatesAutoresizingMaskIntoConstraints = false;
     [self.starImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
     [self.starImageView.widthAnchor constraintEqualToConstant:20].active = YES;
-
-    
+    [self.starImageView.centerYAnchor constraintEqualToAnchor:starMargins.centerYAnchor].active = YES;
     [self.starImageView.leadingAnchor constraintEqualToAnchor:self.starView.trailingAnchor].active = YES;
-    [self.starImageView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.starImageView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.starImageView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.starImageView.trailingAnchor constraintEqualToAnchor:self.starsLabel.trailingAnchor].active = YES;
     self.starImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.forkImageView.image = [UIImage imageNamed:@"star"];
-
     
-    self.forksLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.forksLabel.leadingAnchor constraintEqualToAnchor:forkMargins.leadingAnchor].active = YES;
-    [self.forksLabel.widthAnchor constraintGreaterThanOrEqualToConstant:100].active = YES;
-    [self.forksLabel.trailingAnchor constraintEqualToAnchor:self.starView.leadingAnchor].active = YES;
-    [self.forksLabel.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.forksLabel.topAnchor constraintEqualToAnchor:forkMargins.topAnchor].active = YES;
+    self.starsLabel.translatesAutoresizingMaskIntoConstraints = false;
+    [self.starsLabel.leadingAnchor constraintEqualToAnchor:self.starImageView.trailingAnchor].active = YES;
+    [self.starsLabel.trailingAnchor constraintEqualToAnchor:starMargins.trailingAnchor].active = YES;
+    [self.starsLabel.centerYAnchor constraintEqualToAnchor:starMargins.centerYAnchor].active = YES;
+    [self.starsLabel.bottomAnchor constraintEqualToAnchor:starMargins.bottomAnchor].active = YES;
     
     self.forkImageView.translatesAutoresizingMaskIntoConstraints = false;
     [self.forkImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
     [self.forkImageView.widthAnchor constraintEqualToConstant:20].active = YES;
-
-    
+    [self.forkImageView.centerYAnchor constraintEqualToAnchor:forkMargins.centerYAnchor].active = YES;
     [self.forkImageView.leadingAnchor constraintEqualToAnchor:forkMargins.leadingAnchor].active = YES;
-    [self.forkImageView.trailingAnchor constraintEqualToAnchor:self.forkView.leadingAnchor].active = YES;
-    [self.forkImageView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.forkImageView.topAnchor constraintEqualToAnchor:forkMargins.topAnchor].active = YES;
+    [self.forkImageView.trailingAnchor constraintEqualToAnchor:self.forksLabel.trailingAnchor].active = YES;
     self.forkImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.forkImageView.image = [UIImage imageNamed:@"fork"];
     
-
-    
-
-    
-    
+    self.forksLabel.translatesAutoresizingMaskIntoConstraints = false;
+    [self.forksLabel.leadingAnchor constraintEqualToAnchor:self.forkImageView.trailingAnchor].active = YES;
+    [self.forksLabel.trailingAnchor constraintEqualToAnchor:forkMargins.trailingAnchor].active = YES;
+    [self.forksLabel.centerYAnchor constraintEqualToAnchor:forkMargins.centerYAnchor].active = YES;
+    [self.forksLabel.bottomAnchor constraintEqualToAnchor:forkMargins.bottomAnchor].active = YES;
     
     
     
@@ -170,7 +159,11 @@
     
     
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = false;
+    [self.photoImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
+    [self.photoImageView.widthAnchor constraintEqualToConstant:80].active = YES;
+
     [self.photoImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    
     [self.photoImageView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.photoImageView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
     [self.photoImageView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
