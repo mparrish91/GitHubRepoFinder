@@ -92,12 +92,14 @@
         params[@"client_secret"] = clientSecret;
     }
     
+    NSString *p = @"";
+    p = [p stringByAppendingString:settings.searchString];
+
     NSString *q = @"";
-    if settings.searchString != nil {
-        q = [myString stringByAppendingString:settings.searchSettings];
+    if (settings.searchString != nil) {
 
     }
-    q = [myString stringByAppendingString:settings.searchSettings];
+    q = [q stringByAppendingString:settings.searchString];
     params[@"q"] = q;
     params[@"sort"] = @"starts";
     params[@"order"] = @"desc";

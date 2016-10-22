@@ -10,4 +10,8 @@
 
 @interface GFRepoSearchSettings : NSObject
 
+@property(strong,readonly,nonatomic) NSString *searchString;
+@property(readonly,nonatomic) NSInteger *minStars;
+
+
 @end
