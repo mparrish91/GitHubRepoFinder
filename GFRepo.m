@@ -62,7 +62,7 @@
             NSArray *results = responseObject[@"items"];
             
             for (NSDictionary *result in results) {
-                GFRepo *object = [[GFRepo alloc] initWithServerRepresentation:results];
+                GFRepo *object = [[GFRepo alloc] initWithServerRepresentation:result];
                 if (object != nil)
                 {
                     [repos addObject:object];
@@ -70,31 +70,29 @@
                 
             }
         }
-        if (completionHandler)
-            completionHandler(repos);
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failed 1 - error = %@", error.localizedDescription);
-        if (completionHandler)
-            completionHandler(error);
+
     }];
     
     
 }
 
 
-- (NSArray *)queryParamsWithSettings:(GFRepoSearchSettings *)settings
++ (NSArray *)queryParamsWithSettings:(GFRepoSearchSettings *)settings
 {
-    NSMutableArray *params = [[NSMutableArray alloc]init];
-    if clientID != nil {
-        self.params["client_id"] = self.clientID
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    if (clientID != nil) {
+        params[@"client_id"] = clientID;
     }
     
-    if clientSecret != nil {
-        self.params["client_secret"] = self.clientSecret
+    if (clientSecret != nil) {
+        params[@"client_secret"] = clientSecret;
     }
     
-    NSString *q = @""
+    NSString *q = @"";
     if settings.searchString != nil {
         q = [myString stringByAppendingString:settings.searchSettings];
 
