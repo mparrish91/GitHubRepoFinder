@@ -107,12 +107,19 @@
     //ugh forgot these constaints
     //within the starviews/fork views
     
+    UILayoutGuide *starMargins = self.starView.layoutMarginsGuide;
+    UILayoutGuide *forkMargins = self.forkView.layoutMarginsGuide;
+
     self.starsLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.starsLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.starsLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.starsLabel.bottomAnchor constraintEqualToAnchor:margins.bottomAnchor].active = YES;
+    [self.starsLabel.leadingAnchor constraintEqualToAnchor:starMargins.leadingAnchor].active = YES;
+    [self.starsLabel.trailingAnchor constraintEqualToAnchor:starMargins.trailingAnchor].active = YES;
+    [self.starsLabel.bottomAnchor constraintEqualToAnchor:starMargins.bottomAnchor].active = YES;
     
     self.starImageView.translatesAutoresizingMaskIntoConstraints = false;
+    [self.starImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
+    [self.starImageView.widthAnchor constraintEqualToConstant:20].active = YES;
+
+    
     [self.starImageView.leadingAnchor constraintEqualToAnchor:self.starView.trailingAnchor].active = YES;
     [self.starImageView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.starImageView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
@@ -122,24 +129,27 @@
 
     
     self.forksLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.forksLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.forksLabel.leadingAnchor constraintEqualToAnchor:forkMargins.leadingAnchor].active = YES;
     [self.forksLabel.widthAnchor constraintGreaterThanOrEqualToConstant:100].active = YES;
     [self.forksLabel.trailingAnchor constraintEqualToAnchor:self.starView.leadingAnchor].active = YES;
     [self.forksLabel.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.forksLabel.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.forksLabel.topAnchor constraintEqualToAnchor:forkMargins.topAnchor].active = YES;
     
     self.forkImageView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.forkImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.forkImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
+    [self.forkImageView.widthAnchor constraintEqualToConstant:20].active = YES;
+
+    
+    [self.forkImageView.leadingAnchor constraintEqualToAnchor:forkMargins.leadingAnchor].active = YES;
     [self.forkImageView.trailingAnchor constraintEqualToAnchor:self.forkView.leadingAnchor].active = YES;
     [self.forkImageView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.forkImageView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.forkImageView.topAnchor constraintEqualToAnchor:forkMargins.topAnchor].active = YES;
     self.forkImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.forkImageView.image = [UIImage imageNamed:@"fork"];
     
 
     
-    
-    
+
     
     
     
