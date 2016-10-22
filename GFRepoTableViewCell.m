@@ -147,38 +147,32 @@
     
     self.byLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.byLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.byLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.byLabel.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.byLabel.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.forksLabel.centerYAnchor constraintEqualToAnchor:self.nameView.centerYAnchor].active = YES;
+    [self.byLabel.trailingAnchor constraintEqualToAnchor:self.ownerLabel.leadingAnchor].active = YES;
     
     self.ownerLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.ownerLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.ownerLabel.centerYAnchor constraintEqualToAnchor:self.nameView.centerYAnchor].active = YES;
     [self.ownerLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.ownerLabel.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.ownerLabel.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
     
     
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = false;
     [self.photoImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
     [self.photoImageView.widthAnchor constraintEqualToConstant:80].active = YES;
+    [self.photoImageView.centerYAnchor constraintEqualToAnchor:self.descriptionView.centerYAnchor].active = YES;
 
     [self.photoImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    
-    [self.photoImageView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.photoImageView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.photoImageView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.photoImageView.trailingAnchor constraintEqualToAnchor:self.descriptionLabel.leadingAnchor].active = YES;
     self.photoImageView.contentMode = UIViewContentModeScaleAspectFit;
-
 
     
     self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.descriptionLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.descriptionLabel.leadingAnchor constraintEqualToAnchor:self.photoImageView.trailingAnchor].active = YES;
     [self.descriptionLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.descriptionLabel.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
+    [self.descriptionLabel.bottomAnchor constraintEqualToAnchor:self.descriptionView.topAnchor].active = YES;
     [self.descriptionLabel.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
     
     [self.descriptionLabel sizeToFit];
-    
     self.descriptionLabel.font = [UIFont fontWithName:@"Avenir-Book" size:9];
     self.descriptionLabel.textColor = [UIColor grayColor];
     self.descriptionLabel.numberOfLines = 0;
