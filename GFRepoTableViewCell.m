@@ -84,22 +84,65 @@
     
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.nameLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.nameLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.nameLabel.widthAnchor constraintGreaterThanOrEqualToConstant:100].active = YES;
+    [self.nameLabel.trailingAnchor constraintEqualToAnchor:self.starView.leadingAnchor].active = YES;
     [self.nameLabel.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
     [self.nameLabel.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
     
     self.starView.translatesAutoresizingMaskIntoConstraints = false;
     [self.starView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.starView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.starView.trailingAnchor constraintEqualToAnchor:self.forkView.leadingAnchor].active = YES;
     [self.starView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
     [self.starView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
     
     
     self.forkView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.forkView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.forkView.leadingAnchor constraintEqualToAnchor:self.starView.trailingAnchor].active = YES;
     [self.forkView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.forkView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
     [self.forkView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    
+    
+    
+    //ugh forgot these constaints
+    //within the starviews/fork views
+    
+    self.starsLabel.translatesAutoresizingMaskIntoConstraints = false;
+    [self.starsLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.starsLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.starsLabel.bottomAnchor constraintEqualToAnchor:margins.bottomAnchor].active = YES;
+    
+    self.starImageView.translatesAutoresizingMaskIntoConstraints = false;
+    [self.starImageView.leadingAnchor constraintEqualToAnchor:self.starView.trailingAnchor].active = YES;
+    [self.starImageView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.starImageView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
+    [self.starImageView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    self.starImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.forkImageView.image = [UIImage imageNamed:@"star"];
+
+    
+    self.forksLabel.translatesAutoresizingMaskIntoConstraints = false;
+    [self.forksLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.forksLabel.widthAnchor constraintGreaterThanOrEqualToConstant:100].active = YES;
+    [self.forksLabel.trailingAnchor constraintEqualToAnchor:self.starView.leadingAnchor].active = YES;
+    [self.forksLabel.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
+    [self.forksLabel.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    
+    self.forkImageView.translatesAutoresizingMaskIntoConstraints = false;
+    [self.forkImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.forkImageView.trailingAnchor constraintEqualToAnchor:self.forkView.leadingAnchor].active = YES;
+    [self.forkImageView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
+    [self.forkImageView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    self.forkImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.forkImageView.image = [UIImage imageNamed:@"fork"];
+    
+
+    
+    
+    
+    
+    
+    
     
     
     
@@ -121,6 +164,9 @@
     [self.photoImageView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.photoImageView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
     [self.photoImageView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    self.photoImageView.contentMode = UIViewContentModeScaleAspectFit;
+
+
     
     self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.descriptionLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
