@@ -7,8 +7,8 @@
 //
 
 #import "GFRepo.h"
-#import "UIImageView+AFNetworking.h"
 #import "GFRepoSearchSettings.h"
+#import "AFNetworking.h"
 
 
 #define reposUrl @"https://api.github.com/search/repositories"
@@ -48,24 +48,42 @@
 }
 
 
-
-
-+ (void)fetchReposWithCompletionHandler:(void (^)(NSArray *objects, NSError *error))completionHandler
++ (void)fetchReposWithSettings:(GFRepoSearchSettings *)settings completion: (void (^)(NSArray *objects, NSError *error))completionHandler
 {
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    NSArray *params = [self ]
-    
-    [manager GET:reposUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSArray *params = [self queryParamsWithSettings:settings];
+
+    [manager GET:reposUrl parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"finished 1");
+        
+        NSMutableArray *repos = [[NSMutableArray alloc]init];
+        
+        if (responseObject) {
+            NSArray *results = responseObject[@"items"];
+            
+            for (NSDictionary *result in results) {
+                GFRepo *object = [[GFRepo alloc] initWithServerRepresentation:results];
+                if (object != nil)
+                {
+                    [repos addObject:object];
+                }
+                
+            }
+        }
+        if (completionHandler)
+            completionHandler(repos);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"failed 1 - error = %@", error.localizedDescription);
+        if (completionHandler)
+            completionHandler(error);
     }];
+    
     
 }
 
 
-- (NSArray *)queryParamsWithSettins:(GFRepoSearchSettings *)settings
+- (NSArray *)queryParamsWithSettings:(GFRepoSearchSettings *)settings
 {
     NSMutableArray *params = [[NSMutableArray alloc]init];
     if clientID != nil {
