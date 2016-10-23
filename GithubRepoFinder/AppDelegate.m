@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GFResultsViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    
+    GFResultsViewController *resultsVC =[[GFResultsViewController alloc]init];
+
+    //set window
+    self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setRootViewController:resultsVC];
+    [self.window makeKeyAndVisible];
+    
+    
     return YES;
 }
 

@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GFRepoSearchSettings.h"
+
 
 @interface GFRepo : NSObject
 
@@ -21,5 +23,6 @@
 @property(strong,readonly,nonatomic) NSString *repoDescription;
 
 
++ (void)fetchReposWithSettings:(GFRepoSearchSettings *)settings completion: (void (^)(NSArray *objects, NSError *error))completionHandler;
 
 @end

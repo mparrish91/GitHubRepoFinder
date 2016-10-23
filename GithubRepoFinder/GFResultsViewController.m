@@ -7,6 +7,10 @@
 //
 
 #import "GFResultsViewController.h"
+#import "MBProgressHUD.h"
+#import "GFRepo.h"
+#import "GFRepoSearchSettings.h"
+
 
 @interface GFResultsViewController ()
 
@@ -16,22 +20,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self doSearch];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
+- (void)doSearch {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    GFRepoSearchSettings *searchSettings = [[GFRepoSearchSettings alloc]init];
+    
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+    [GFRepo fetchReposWithSettings:searchSettings completion:^(NSArray *objects, NSError *error)
+     {
+         NSLog(@"%@", objects);
+
+     }];
+     
+    
+     }
+     
+     
 
 @end

@@ -52,6 +52,7 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSArray *params = [self queryParamsWithSettings:settings];
+    NSLog(@"%@", reposUrl);
 
     [manager GET:reposUrl parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"finished 1");
@@ -84,24 +85,22 @@
 + (NSArray *)queryParamsWithSettings:(GFRepoSearchSettings *)settings
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
-    if (clientID != nil) {
+    if (clientID != @"") {
         params[@"client_id"] = clientID;
     }
     
-    if (clientSecret != nil) {
+    if (clientSecret != @"") {
         params[@"client_secret"] = clientSecret;
     }
     
-    NSString *p = @"";
-    p = [p stringByAppendingString:settings.searchString];
-
     NSString *q = @"";
     if (settings.searchString != nil) {
-
+          q = [q stringByAppendingString:settings.searchString];
     }
-    q = [q stringByAppendingString:settings.searchString];
+ 
+    q = [q stringByAppendingString:[NSString stringWithFormat:@"stars:>%d", settings.minStars]];
     params[@"q"] = q;
-    params[@"sort"] = @"starts";
+    params[@"sort"] = @"stars";
     params[@"order"] = @"desc";
 
     return params;
