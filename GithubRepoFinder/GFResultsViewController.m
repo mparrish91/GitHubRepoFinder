@@ -177,8 +177,8 @@
     GFRepo *repo = [self.displayedItems objectAtIndex:indexPath.row];
     cell.nameLabel.text = [repo name];
     cell.ownerLabel.text = [repo ownerHandle];
-    cell.starsLabel.text = [NSString stringWithFormat:@"%d", [repo stars]];
-    cell.forksLabel.text = [NSString stringWithFormat:@"%d", [repo forks]];
+    cell.starsLabel.text = [NSString stringWithFormat:@"%li", (long)[repo stars].integerValue];
+    cell.forksLabel.text = [NSString stringWithFormat:@"%li", (long)[repo forks].integerValue];
     cell.descriptionLabel.text = [repo repoDescription];
 
     NSString *photoImageURL = [repo ownerAvatarURL];

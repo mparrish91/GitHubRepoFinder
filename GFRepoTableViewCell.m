@@ -92,8 +92,8 @@
     [self.nameLabel.bottomAnchor constraintEqualToAnchor:self.titleView.bottomAnchor].active = YES;
     [self.nameLabel.topAnchor constraintEqualToAnchor:self.titleView.topAnchor].active = YES;
     
-    self.byLabel.font = [UIFont fontWithName:@"Avenir-Book" size:13];
-    self.byLabel.textColor = [UIColor blackColor];
+    self.nameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:13];
+    self.nameLabel.textColor = [UIColor blackColor];
     
     self.starView.translatesAutoresizingMaskIntoConstraints = false;
     [self.starView.leadingAnchor constraintEqualToAnchor:self.nameLabel.trailingAnchor constant:5].active = YES;
@@ -103,7 +103,7 @@
     
     self.forkView.translatesAutoresizingMaskIntoConstraints = false;
     [self.forkView.leadingAnchor constraintEqualToAnchor:self.starView.trailingAnchor].active = YES;
-    [self.forkView.trailingAnchor constraintEqualToAnchor:self.titleView.trailingAnchor].active = YES;
+//    [self.forkView.trailingAnchor constraintEqualToAnchor:self.titleView.trailingAnchor].active = YES;
     [self.forkView.bottomAnchor constraintEqualToAnchor:self.titleView.bottomAnchor].active = YES;
     [self.forkView.topAnchor constraintEqualToAnchor:self.titleView.topAnchor].active = YES;
     
@@ -120,7 +120,7 @@
     
     self.starImageView.translatesAutoresizingMaskIntoConstraints = false;
     [self.starImageView.widthAnchor constraintEqualToAnchor:self.starImageView.heightAnchor].active = YES;
-    [self.starImageView.widthAnchor constraintEqualToConstant:20].active = YES;
+    [self.starImageView.widthAnchor constraintEqualToConstant:17].active = YES;
     [self.starImageView.centerYAnchor constraintEqualToAnchor:starMargins.centerYAnchor].active = YES;
     [self.starImageView.leadingAnchor constraintEqualToAnchor:starMargins.leadingAnchor].active = YES;
     self.starImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -132,20 +132,27 @@
     [self.starsLabel.centerYAnchor constraintEqualToAnchor:starMargins.centerYAnchor].active = YES;
     [self.starsLabel.bottomAnchor constraintEqualToAnchor:starMargins.bottomAnchor].active = YES;
     
+    self.starsLabel.font = [UIFont fontWithName:@"Avenir-Book" size:9];
+    self.starsLabel.textColor = [UIColor grayColor];
+    
     self.forkImageView.translatesAutoresizingMaskIntoConstraints = false;
     [self.forkImageView.widthAnchor constraintEqualToAnchor:self.forkImageView.heightAnchor].active = YES;
-    [self.forkImageView.widthAnchor constraintEqualToConstant:20].active = YES;
+    [self.forkImageView.widthAnchor constraintEqualToConstant:17].active = YES;
     [self.forkImageView.centerYAnchor constraintEqualToAnchor:forkMargins.centerYAnchor].active = YES;
     [self.forkImageView.leadingAnchor constraintEqualToAnchor:forkMargins.leadingAnchor].active = YES;
-    [self.forkImageView.trailingAnchor constraintEqualToAnchor:self.forksLabel.trailingAnchor].active = YES;
+//    [self.forkImageView.trailingAnchor constraintEqualToAnchor:self.forksLabel.trailingAnchor].active = YES;
     self.forkImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.forkImageView.image = [UIImage imageNamed:@"fork"];
     
     self.forksLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.forksLabel.leadingAnchor constraintEqualToAnchor:self.forkImageView.trailingAnchor].active = YES;
-    [self.forksLabel.trailingAnchor constraintEqualToAnchor:forkMargins.trailingAnchor].active = YES;
+    [self.forksLabel.leadingAnchor constraintEqualToAnchor:self.forkImageView.trailingAnchor constant:2].active = YES;
+//    [self.forksLabel.trailingAnchor constraintEqualToAnchor:forkMargins.trailingAnchor].active = YES;
     [self.forksLabel.centerYAnchor constraintEqualToAnchor:forkMargins.centerYAnchor].active = YES;
     [self.forksLabel.bottomAnchor constraintEqualToAnchor:forkMargins.bottomAnchor].active = YES;
+    
+    self.forksLabel.font = [UIFont fontWithName:@"Avenir-Book" size:9];
+    self.forksLabel.textColor = [UIColor grayColor];
+
     
     
     
