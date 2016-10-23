@@ -18,8 +18,8 @@
 @property(strong,readonly,nonatomic) NSString *ownerHandle;
 @property(strong,readonly,nonatomic) NSString *ownerAvatarURL;
 
-@property(readonly,nonatomic) NSInteger *stars;
-@property(readonly,nonatomic) NSInteger *forks;
+@property(readonly,nonatomic) NSNumber *stars;
+@property(readonly,nonatomic) NSNumber *forks;
 @property(strong,readonly,nonatomic) NSString *repoDescription;
 
 
