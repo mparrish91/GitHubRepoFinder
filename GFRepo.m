@@ -72,9 +72,16 @@
             }
         }
         
+        if (completionHandler)
+            completionHandler(repos, nil);
+
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failed 1 - error = %@", error.localizedDescription);
+        
+        if (completionHandler)
+            completionHandler(nil, error);
 
     }];
     

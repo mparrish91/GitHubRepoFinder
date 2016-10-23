@@ -46,10 +46,9 @@
     self.reposTableView = [[UITableView alloc]init];
     self.searchBar = [[UISearchBar alloc] init];
     
-//    self.errorView = [[GHErrorView alloc]init];
+    self.errorView = [[GFErrorView alloc]init];
     self.repos = [[NSMutableArray alloc] init];
     self.filteredRepos = [[NSMutableArray alloc] init];
-    
     
     
     self = [super init];
@@ -60,14 +59,6 @@
 
 
 
-//- (instancetype)initWithMovies:(NSArray *)movieArray
-//{
-//    self = [super init];
-//    if(self) {
-//        self.movies = movieArray;
-//    }
-//    return self;
-//}
 
 #pragma mark - UIViewController
 
@@ -109,8 +100,39 @@
     
     [GFRepo fetchReposWithSettings:searchSettings completion:^(NSArray *objects, NSError *error)
      {
-         NSLog(@"%@", objects);
+         if (error)
+         {
+             [self showErrorView:self.errorView];
+         }
+         else
+         {
+             [self hideErrorView:self.errorView];
+             
+         }
+         [self.repos addObjectsFromArray:objects];
+         self.displayedItems = self.repos;
          
+    
+         dispatch_async(dispatch_get_main_queue(), ^{
+             self.isMoreDataLoading = false;
+             [self.reposTableView reloadData];
+             
+             
+             if ([[NSThread currentThread] isMainThread]){
+                 NSLog(@"In main thread--completion handler");
+                 
+                 [self.refreshControl endRefreshing];
+                 [self.loadingMoreView stopAnimating];
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                 
+                 
+             }
+             else{
+                 NSLog(@"Not in main thread--completion handler");
+             }
+             
+         });
+
      }];
     
     
