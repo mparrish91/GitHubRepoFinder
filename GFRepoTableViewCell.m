@@ -88,13 +88,15 @@
     
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.nameLabel.leadingAnchor constraintEqualToAnchor:self.titleView.leadingAnchor].active = YES;
-    [self.nameLabel.widthAnchor constraintGreaterThanOrEqualToConstant:100].active = YES;
-//    [self.nameLabel.trailingAnchor constraintEqualToAnchor:self.starView.leadingAnchor].active = YES;
+    [self.nameLabel.widthAnchor constraintGreaterThanOrEqualToConstant:70].active = YES;
     [self.nameLabel.bottomAnchor constraintEqualToAnchor:self.titleView.bottomAnchor].active = YES;
     [self.nameLabel.topAnchor constraintEqualToAnchor:self.titleView.topAnchor].active = YES;
     
+    self.byLabel.font = [UIFont fontWithName:@"Avenir-Book" size:13];
+    self.byLabel.textColor = [UIColor blackColor];
+    
     self.starView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.starView.leadingAnchor constraintEqualToAnchor:self.titleView.leadingAnchor].active = YES;
+    [self.starView.leadingAnchor constraintEqualToAnchor:self.nameLabel.trailingAnchor constant:5].active = YES;
     [self.starView.bottomAnchor constraintEqualToAnchor:self.titleView.bottomAnchor].active = YES;
     [self.starView.topAnchor constraintEqualToAnchor:self.titleView.topAnchor].active = YES;
     
@@ -117,16 +119,15 @@
 
     
     self.starImageView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.starImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
+    [self.starImageView.widthAnchor constraintEqualToAnchor:self.starImageView.heightAnchor].active = YES;
     [self.starImageView.widthAnchor constraintEqualToConstant:20].active = YES;
     [self.starImageView.centerYAnchor constraintEqualToAnchor:starMargins.centerYAnchor].active = YES;
-    [self.starImageView.leadingAnchor constraintEqualToAnchor:self.starView.trailingAnchor].active = YES;
-    [self.starImageView.trailingAnchor constraintEqualToAnchor:self.starsLabel.trailingAnchor].active = YES;
+    [self.starImageView.leadingAnchor constraintEqualToAnchor:starMargins.leadingAnchor].active = YES;
     self.starImageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.forkImageView.image = [UIImage imageNamed:@"star"];
+    self.starImageView.image = [UIImage imageNamed:@"star"];
     
     self.starsLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.starsLabel.leadingAnchor constraintEqualToAnchor:self.starImageView.trailingAnchor].active = YES;
+    [self.starsLabel.leadingAnchor constraintEqualToAnchor:self.starImageView.trailingAnchor constant:2].active = YES;
     [self.starsLabel.trailingAnchor constraintEqualToAnchor:starMargins.trailingAnchor].active = YES;
     [self.starsLabel.centerYAnchor constraintEqualToAnchor:starMargins.centerYAnchor].active = YES;
     [self.starsLabel.bottomAnchor constraintEqualToAnchor:starMargins.bottomAnchor].active = YES;
