@@ -65,6 +65,8 @@
     
     UILayoutGuide *margins = self.contentView.layoutMarginsGuide;
     
+    //3 main views first
+    
     self.titleView.translatesAutoresizingMaskIntoConstraints = false;
     [self.titleView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
     [self.titleView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
@@ -78,8 +80,6 @@
     
     [self.nameView.heightAnchor constraintEqualToConstant:15].active = YES;
 
-
-    
     self.descriptionView.translatesAutoresizingMaskIntoConstraints = false;
     [self.descriptionView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
     [self.descriptionView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
@@ -87,24 +87,23 @@
     
     
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.nameLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.nameLabel.leadingAnchor constraintEqualToAnchor:self.titleView.leadingAnchor].active = YES;
     [self.nameLabel.widthAnchor constraintGreaterThanOrEqualToConstant:100].active = YES;
-    [self.nameLabel.trailingAnchor constraintEqualToAnchor:self.starView.leadingAnchor].active = YES;
-    [self.nameLabel.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.nameLabel.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+//    [self.nameLabel.trailingAnchor constraintEqualToAnchor:self.starView.leadingAnchor].active = YES;
+    [self.nameLabel.bottomAnchor constraintEqualToAnchor:self.titleView.bottomAnchor].active = YES;
+    [self.nameLabel.topAnchor constraintEqualToAnchor:self.titleView.topAnchor].active = YES;
     
     self.starView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.starView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.starView.trailingAnchor constraintEqualToAnchor:self.forkView.leadingAnchor].active = YES;
-    [self.starView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.starView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.starView.leadingAnchor constraintEqualToAnchor:self.titleView.leadingAnchor].active = YES;
+    [self.starView.bottomAnchor constraintEqualToAnchor:self.titleView.bottomAnchor].active = YES;
+    [self.starView.topAnchor constraintEqualToAnchor:self.titleView.topAnchor].active = YES;
     
     
     self.forkView.translatesAutoresizingMaskIntoConstraints = false;
     [self.forkView.leadingAnchor constraintEqualToAnchor:self.starView.trailingAnchor].active = YES;
-    [self.forkView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.forkView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
-    [self.forkView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.forkView.trailingAnchor constraintEqualToAnchor:self.titleView.trailingAnchor].active = YES;
+    [self.forkView.bottomAnchor constraintEqualToAnchor:self.titleView.bottomAnchor].active = YES;
+    [self.forkView.topAnchor constraintEqualToAnchor:self.titleView.topAnchor].active = YES;
     
     
     
@@ -149,11 +148,9 @@
     
     
     
-    
     self.byLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.byLabel.leadingAnchor constraintEqualToAnchor:self.nameView.leadingAnchor].active = YES;
     [self.byLabel.centerYAnchor constraintEqualToAnchor:self.nameView.centerYAnchor].active = YES;
-    [self.byLabel.trailingAnchor constraintEqualToAnchor:self.ownerLabel.leadingAnchor].active = YES;
     self.byLabel.text = @"by";
     
     self.byLabel.font = [UIFont fontWithName:@"Avenir-Book" size:9];
@@ -161,9 +158,13 @@
 
     
     self.ownerLabel.translatesAutoresizingMaskIntoConstraints = false;
+    [self.ownerLabel.leadingAnchor constraintEqualToAnchor:self.byLabel.trailingAnchor constant:5].active = YES;
     [self.ownerLabel.centerYAnchor constraintEqualToAnchor:self.nameView.centerYAnchor].active = YES;
-    [self.ownerLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.ownerLabel.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
+    [self.ownerLabel.trailingAnchor constraintEqualToAnchor:self.nameView.trailingAnchor].active = YES;
+    [self.ownerLabel.bottomAnchor constraintEqualToAnchor:self.nameView.bottomAnchor].active = YES;
+    
+    self.ownerLabel.font = [UIFont fontWithName:@"Avenir-Book" size:11];
+    self.ownerLabel.textColor = [UIColor blackColor];
     
     
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = false;
