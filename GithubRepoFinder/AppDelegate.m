@@ -18,12 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    
     GFResultsViewController *resultsVC =[[GFResultsViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:resultsVC];
 
     //set window
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:resultsVC];
+    [self.window setRootViewController:nav];
     [self.window makeKeyAndVisible];
     
     

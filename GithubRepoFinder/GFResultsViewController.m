@@ -50,10 +50,11 @@
     self.repos = [[NSMutableArray alloc] init];
     self.filteredRepos = [[NSMutableArray alloc] init];
     
+
+    if (!(self = [super init]))
+        return nil;
     
-    self = [super init];
-    if(self) {
-    }
+    
     return self;
 }
 
@@ -66,7 +67,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Flix";
     
     self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.7];
     
@@ -116,11 +116,11 @@
          dispatch_async(dispatch_get_main_queue(), ^{
              self.isMoreDataLoading = false;
              [self.reposTableView reloadData];
+
              
              
              if ([[NSThread currentThread] isMainThread]){
                  NSLog(@"In main thread--completion handler");
-                 
                  [self.refreshControl endRefreshing];
                  [self.loadingMoreView stopAnimating];
                  [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -171,10 +171,7 @@
 -(void) tableView:(UITableView *) tableView willDisplayCell:(GFRepoTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [UIView beginAnimations:@"fade" context:nil];
-    [UIView setAnimationDuration:20.0];
-    [UIView setAnimationRepeatAutoreverses:YES];
-    [UIView setAnimationRepeatCount: 0.5];
+
     GFRepo *repo = [self.displayedItems objectAtIndex:indexPath.row];
     cell.nameLabel.text = [repo name];
     cell.ownerLabel.text = [repo ownerHandle];
@@ -185,10 +182,9 @@
     NSString *photoImageURL = [repo ownerAvatarURL];
     
     
-    [cell.photoImageView setImageWithURL:[NSURL URLWithString:photoImageURL] placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
+//    [cell.photoImageView setImageWithURL:[NSURL URLWithString:photoImageURL] placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [UIView commitAnimations];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -306,9 +302,7 @@
     [self.searchBar sizeToFit];
     
     self.navigationItem.titleView = self.searchBar;
-    
-    
-    
+
 }
 
 

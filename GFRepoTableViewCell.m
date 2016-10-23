@@ -38,13 +38,14 @@
     [self.starView addSubview:self.starsLabel];
     [self.starView addSubview:self.starImageView];
     
-    [self.forkImageView addSubview:self.forksLabel];
-    [self.forkImageView addSubview:self.forkImageView];
+    
+    [self.forkView addSubview:self.forksLabel];
+    [self.forkView addSubview:self.forkImageView];
     
     
     [self.titleView addSubview:self.nameLabel];
     [self.titleView addSubview:self.starView];
-    [self.titleView addSubview:self.forkImageView];
+    [self.titleView addSubview:self.forkView];
     [[self contentView]addSubview:self.titleView];
 
     [self.nameView addSubview:self.ownerLabel];
@@ -128,7 +129,7 @@
     [self.starsLabel.bottomAnchor constraintEqualToAnchor:starMargins.bottomAnchor].active = YES;
     
     self.forkImageView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.forkImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
+    [self.forkImageView.widthAnchor constraintEqualToAnchor:self.forkImageView.heightAnchor].active = YES;
     [self.forkImageView.widthAnchor constraintEqualToConstant:20].active = YES;
     [self.forkImageView.centerYAnchor constraintEqualToAnchor:forkMargins.centerYAnchor].active = YES;
     [self.forkImageView.leadingAnchor constraintEqualToAnchor:forkMargins.leadingAnchor].active = YES;
