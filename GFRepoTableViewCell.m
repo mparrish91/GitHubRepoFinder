@@ -75,6 +75,9 @@
     [self.nameView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
     [self.nameView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.nameView.bottomAnchor constraintEqualToAnchor:self.descriptionView.topAnchor].active = YES;
+    
+    [self.nameView.heightAnchor constraintEqualToConstant:15].active = YES;
+
 
     
     self.descriptionView.translatesAutoresizingMaskIntoConstraints = false;
@@ -148,9 +151,14 @@
     
     
     self.byLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.byLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.forksLabel.centerYAnchor constraintEqualToAnchor:self.nameView.centerYAnchor].active = YES;
+    [self.byLabel.leadingAnchor constraintEqualToAnchor:self.nameView.leadingAnchor].active = YES;
+    [self.byLabel.centerYAnchor constraintEqualToAnchor:self.nameView.centerYAnchor].active = YES;
     [self.byLabel.trailingAnchor constraintEqualToAnchor:self.ownerLabel.leadingAnchor].active = YES;
+    self.byLabel.text = @"by";
+    
+    self.byLabel.font = [UIFont fontWithName:@"Avenir-Book" size:9];
+    self.byLabel.textColor = [UIColor grayColor];
+
     
     self.ownerLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.ownerLabel.centerYAnchor constraintEqualToAnchor:self.nameView.centerYAnchor].active = YES;
@@ -160,11 +168,9 @@
     
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = false;
     [self.photoImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
-    [self.photoImageView.widthAnchor constraintEqualToConstant:50].active = YES;
+    [self.photoImageView.widthAnchor constraintEqualToConstant:40].active = YES;
     [self.photoImageView.centerYAnchor constraintEqualToAnchor:self.descriptionView.centerYAnchor].active = YES;
-
     [self.photoImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-//    [self.photoImageView.trailingAnchor constraintEqualToAnchor:self.descriptionLabel.leadingAnchor].active = YES;
     self.photoImageView.contentMode = UIViewContentModeScaleAspectFit;
 
     
