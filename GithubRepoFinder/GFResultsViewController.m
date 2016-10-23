@@ -246,7 +246,7 @@
     
 }
 
-- (void)hideErrorView:(FLErrorView *)errorView
+- (void)hideErrorView:(GFErrorView *)errorView
 {
     [UIView animateWithDuration:1.0 delay:0.0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0 options:0 animations:^{
         
@@ -256,7 +256,7 @@
     
 }
 
-- (void)showErrorView:(FLErrorView *)errorView
+- (void)showErrorView:(GFErrorView *)errorView
 {
     [UIView animateWithDuration:1.0 delay:0.0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0 options:0 animations:^{
         
@@ -269,10 +269,10 @@
 
 - (void)setupInfiniteScrollView
 {
-    CGRect frame = CGRectMake(0, self.moviesTableView.contentSize.height - self.tabBarController.tabBar.frame.size.height, self.moviesTableView.bounds.size.width, FLInfiniteScrollActivityView.defaultHeight);
-    self.loadingMoreView = [[FLInfiniteScrollActivityView alloc]initWithFrame:frame];
+    CGRect frame = CGRectMake(0, self.reposTableView.contentSize.height - self.tabBarController.tabBar.frame.size.height, self.reposTableView.bounds.size.width, GFInfiniteScrollActivityView.defaultHeight);
+    self.loadingMoreView = [[GFInfiniteScrollActivityView alloc]initWithFrame:frame];
     self.loadingMoreView.hidden = true;
-    [self.moviesTableView addSubview:self.loadingMoreView];
+    [self.reposTableView addSubview:self.loadingMoreView];
     self.loadingMoreView.backgroundColor = [UIColor yellowColor];
     
     
@@ -301,13 +301,13 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    [self.moviesTableView setContentOffset:CGPointMake(0, 0)];
+    [self.reposTableView setContentOffset:CGPointMake(0, 0)];
     
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    [self.moviesTableView setContentOffset:CGPointMake(0, 0)];
+    [self.reposTableView setContentOffset:CGPointMake(0, 0)];
     
 }
 
