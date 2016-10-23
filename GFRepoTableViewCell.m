@@ -110,6 +110,7 @@
     
     UILayoutGuide *starMargins = self.starView.layoutMarginsGuide;
     UILayoutGuide *forkMargins = self.forkView.layoutMarginsGuide;
+    UILayoutGuide *descriptionMargins = self.descriptionView.layoutMarginsGuide;
 
 
     
@@ -159,25 +160,31 @@
     
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = false;
     [self.photoImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
-    [self.photoImageView.widthAnchor constraintEqualToConstant:80].active = YES;
+    [self.photoImageView.widthAnchor constraintEqualToConstant:50].active = YES;
     [self.photoImageView.centerYAnchor constraintEqualToAnchor:self.descriptionView.centerYAnchor].active = YES;
 
     [self.photoImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.photoImageView.trailingAnchor constraintEqualToAnchor:self.descriptionLabel.leadingAnchor].active = YES;
+//    [self.photoImageView.trailingAnchor constraintEqualToAnchor:self.descriptionLabel.leadingAnchor].active = YES;
     self.photoImageView.contentMode = UIViewContentModeScaleAspectFit;
 
     
     self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.descriptionLabel.leadingAnchor constraintEqualToAnchor:self.photoImageView.trailingAnchor].active = YES;
-    [self.descriptionLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.descriptionLabel.bottomAnchor constraintEqualToAnchor:self.descriptionView.topAnchor].active = YES;
-    [self.descriptionLabel.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.descriptionLabel.leadingAnchor constraintEqualToAnchor:self.photoImageView.trailingAnchor constant:10].active = YES;
+    [self.descriptionLabel.trailingAnchor constraintEqualToAnchor:descriptionMargins.trailingAnchor].active = YES;
+    [self.descriptionLabel.bottomAnchor constraintEqualToAnchor:descriptionMargins.bottomAnchor].active = YES;
+    [self.descriptionLabel.topAnchor constraintEqualToAnchor:descriptionMargins.topAnchor].active = YES;
     
     [self.descriptionLabel sizeToFit];
     self.descriptionLabel.font = [UIFont fontWithName:@"Avenir-Book" size:9];
     self.descriptionLabel.textColor = [UIColor grayColor];
     self.descriptionLabel.numberOfLines = 0;
     self.descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    
+    
+    self.titleView.backgroundColor = [UIColor yellowColor];
+    self.nameView.backgroundColor = [UIColor redColor];
+    self.descriptionView.backgroundColor = [UIColor greenColor];
+
 }
 
 

@@ -86,6 +86,8 @@
     self.reposTableView.estimatedRowHeight = 100;
     self.reposTableView.rowHeight = UITableViewAutomaticDimension;
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings"  style:UIBarButtonItemStylePlain target:self action:@selector(refreshTable)];
+
     [self setConstraints];
     [self doSearch];
     
