@@ -11,6 +11,8 @@
 #import "GFRepo.h"
 #import "GFRepoSearchSettings.h"
 #import "GFRepoTableViewCell.h"
+#import "GFRepo.h"
+#import "UIImageView+AFNetworking.h"
 
 
 @interface GFResultsViewController ()
@@ -34,16 +36,6 @@
 
 @implementation GFResultsViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self doSearch];
-    
-}
-
-
-
-     
 
 #pragma mark - Initialize
 
@@ -66,14 +58,14 @@
 
 
 
-- (instancetype)initWithMovies:(NSArray *)movieArray
-{
-    self = [super init];
-    if(self) {
-        self.movies = movieArray;
-    }
-    return self;
-}
+//- (instancetype)initWithMovies:(NSArray *)movieArray
+//{
+//    self = [super init];
+//    if(self) {
+//        self.movies = movieArray;
+//    }
+//    return self;
+//}
 
 #pragma mark - UIViewController
 
@@ -87,18 +79,16 @@
     
     //tableview
     NSString *cellIdentifier = @"cell";
-    [self.reposTableView registerClass:[FLMovieTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self.reposTableView registerClass:[GFRepoTableViewCell class] forCellReuseIdentifier:cellIdentifier];
     self.reposTableView.delegate = self;
     self.reposTableView.dataSource = self;
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.reposTableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
-    UIEdgeInsets insets = self.reposTableView.contentInset;
-    insets.bottom += FLInfiniteScrollActivityView.defaultHeight + self.tabBarController.tabBar.frame.size.height;
-    self.moviesTableView.contentInset = insets;
-    
-    
+//    UIEdgeInsets insets = self.reposTableView.contentInset;
+//    insets.bottom += FLInfiniteScrollActivityView.defaultHeight
+//    self.moviesTableView.contentInset = insets;
     
     self.reposTableView.estimatedRowHeight = 100;
     self.reposTableView.rowHeight = UITableViewAutomaticDimension;
@@ -142,40 +132,30 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cell";
-    FLMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+    GFRepoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
     
     if (cell == nil)
     {
-        cell = [[FLMovieTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[GFRepoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    //    FLMovie *movie = [self.displayedItems objectAtIndex:indexPath.row];
-    //    cell.titleLabel.text = [movie title];
-    ////    cell.overviewLabel.text = [self convertDateToString:movie.releaseDate];
-    //    cell.overviewLabel.text = [movie overview];
-    //    NSString *photoImageURL = [movie posterPath];
-    //
-    //
-    //    [cell.photoImageView setImageWithURL:[NSURL URLWithString:photoImageURL] placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
-    //
-    //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     
     return cell;
 }
 
 //This function is where all the magic happens
--(void) tableView:(UITableView *) tableView willDisplayCell:(FLMovieTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) tableView:(UITableView *) tableView willDisplayCell:(GFRepoTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     [UIView beginAnimations:@"fade" context:nil];
     [UIView setAnimationDuration:20.0];
     [UIView setAnimationRepeatAutoreverses:YES];
     [UIView setAnimationRepeatCount: 0.5];
-    FLMovie *movie = [self.displayedItems objectAtIndex:indexPath.row];
-    cell.titleLabel.text = [movie title];
+    GFRepo *repo = [self.displayedItems objectAtIndex:indexPath.row];
+    cell.titleLabel.text = [repo title];
     //    cell.overviewLabel.text = [self convertDateToString:movie.releaseDate];
-    cell.overviewLabel.text = [movie overview];
-    NSString *photoImageURL = [movie posterPath];
+    cell.overviewLabel.text = [repo overview];
+    NSString *photoImageURL = [repo posterPath];
     
     
     [cell.photoImageView setImageWithURL:[NSURL URLWithString:photoImageURL] placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
@@ -188,16 +168,15 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
     
-    FLMovie *movie = [self.movies objectAtIndex:indexPath.row];
-    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithMovie:movie];
-    //    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithURL:[movie posterPath]];
-    [self.navigationController pushViewController:detailVC animated:true];
+    GFRepo *repo = [self.displayedItems objectAtIndex:indexPath.row];
+
+//    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithMovie:movie];
+//    //    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithURL:[movie posterPath]];
+//    [self.navigationController pushViewController:detailVC animated:true];
 }
 
 - (void)refreshTable {
-    //TODO: refresh your data
-    
-    [self fetchMovies];
+    [self doSearch];
 }
 
 
@@ -207,14 +186,14 @@
     
     if (!self.isMoreDataLoading)
     {
-        CGFloat scrollViewContentHeight = self.moviesTableView.contentSize.height;
-        CGFloat scrollOffsetThreshold = scrollViewContentHeight - self.moviesTableView.bounds.size.height;
+        CGFloat scrollViewContentHeight = self.reposTableView.contentSize.height;
+        CGFloat scrollOffsetThreshold = scrollViewContentHeight - self.reposTableView.bounds.size.height;
         
         // When the user has scrolled past the threshold, start requesting
-        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.moviesTableView.dragging) {
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.reposTableView.dragging) {
             self.isMoreDataLoading = true;
             
-            CGRect frame = CGRectMake(0, self.moviesTableView.contentSize.height - self.tabBarController.tabBar.frame.size.height, self.moviesTableView.bounds.size.width, FLInfiniteScrollActivityView.defaultHeight);
+            CGRect frame = CGRectMake(0, self.reposTableView.contentSize.height - self.tabBarController.tabBar.frame.size.height, self.reposTableView.bounds.size.width, FLInfiniteScrollActivityView.defaultHeight);
             self.loadingMoreView.frame = frame;
             [self.loadingMoreView startAnimating];
             
