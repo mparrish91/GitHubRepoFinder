@@ -152,10 +152,13 @@
     [UIView setAnimationRepeatAutoreverses:YES];
     [UIView setAnimationRepeatCount: 0.5];
     GFRepo *repo = [self.displayedItems objectAtIndex:indexPath.row];
-    cell.titleLabel.text = [repo title];
-    //    cell.overviewLabel.text = [self convertDateToString:movie.releaseDate];
-    cell.overviewLabel.text = [repo overview];
-    NSString *photoImageURL = [repo posterPath];
+    cell.nameLabel.text = [repo name];
+    cell.ownerLabel.text = [repo ownerHandle];
+    cell.starsLabel.text = [NSString stringWithFormat:@"%d", [repo stars]];
+    cell.forksLabel.text = [NSString stringWithFormat:@"%d", [repo forks]];
+    cell.descriptionLabel.text = [repo repoDescription];
+
+    NSString *photoImageURL = [repo ownerAvatarURL];
     
     
     [cell.photoImageView setImageWithURL:[NSURL URLWithString:photoImageURL] placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
