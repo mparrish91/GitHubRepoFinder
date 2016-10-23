@@ -16,6 +16,8 @@
 		420C920A1DBBDB4600C9F0E4 /* GFRepoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420C92091DBBDB4600C9F0E4 /* GFRepoTableViewCell.m */; };
 		420C920D1DBBDB5600C9F0E4 /* GFRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 420C920C1DBBDB5600C9F0E4 /* GFRepo.m */; };
 		420C92101DBBDB7C00C9F0E4 /* GFRepoSearchSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 420C920F1DBBDB7C00C9F0E4 /* GFRepoSearchSettings.m */; };
+		42F04C2C1DBC50F700092F1C /* GFInfiniteScrollActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F04C2B1DBC50F700092F1C /* GFInfiniteScrollActivityView.m */; };
+		42F04C2F1DBC518D00092F1C /* GHErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F04C2E1DBC518D00092F1C /* GHErrorView.m */; };
 		446473C0A95D1F8C042EB7C3 /* Pods_GithubRepoFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 109FE2E9BCEEE3DB61F4AF75 /* Pods_GithubRepoFinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,10 @@
 		420C920C1DBBDB5600C9F0E4 /* GFRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GFRepo.m; path = ../GFRepo.m; sourceTree = "<group>"; };
 		420C920E1DBBDB7C00C9F0E4 /* GFRepoSearchSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GFRepoSearchSettings.h; path = ../GFRepoSearchSettings.h; sourceTree = "<group>"; };
 		420C920F1DBBDB7C00C9F0E4 /* GFRepoSearchSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GFRepoSearchSettings.m; path = ../GFRepoSearchSettings.m; sourceTree = "<group>"; };
+		42F04C2A1DBC50F700092F1C /* GFInfiniteScrollActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFInfiniteScrollActivityView.h; sourceTree = "<group>"; };
+		42F04C2B1DBC50F700092F1C /* GFInfiniteScrollActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFInfiniteScrollActivityView.m; sourceTree = "<group>"; };
+		42F04C2D1DBC518D00092F1C /* GHErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHErrorView.h; sourceTree = "<group>"; };
+		42F04C2E1DBC518D00092F1C /* GHErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHErrorView.m; sourceTree = "<group>"; };
 		759E4D657B47AB19A1E43592 /* Pods-GithubRepoFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubRepoFinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubRepoFinder/Pods-GithubRepoFinder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +135,10 @@
 			children = (
 				420C92081DBBDB4600C9F0E4 /* GFRepoTableViewCell.h */,
 				420C92091DBBDB4600C9F0E4 /* GFRepoTableViewCell.m */,
+				42F04C2A1DBC50F700092F1C /* GFInfiniteScrollActivityView.h */,
+				42F04C2B1DBC50F700092F1C /* GFInfiniteScrollActivityView.m */,
+				42F04C2D1DBC518D00092F1C /* GHErrorView.h */,
+				42F04C2E1DBC518D00092F1C /* GHErrorView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -268,7 +278,9 @@
 				420C920D1DBBDB5600C9F0E4 /* GFRepo.m in Sources */,
 				420C920A1DBBDB4600C9F0E4 /* GFRepoTableViewCell.m in Sources */,
 				420C91F01DBBDAC000C9F0E4 /* AppDelegate.m in Sources */,
+				42F04C2F1DBC518D00092F1C /* GHErrorView.m in Sources */,
 				420C92071DBBDB1200C9F0E4 /* GFResultsViewController.m in Sources */,
+				42F04C2C1DBC50F700092F1C /* GFInfiniteScrollActivityView.m in Sources */,
 				420C91ED1DBBDAC000C9F0E4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
