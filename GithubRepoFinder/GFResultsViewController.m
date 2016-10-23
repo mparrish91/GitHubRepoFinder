@@ -182,7 +182,7 @@
     NSString *photoImageURL = [repo ownerAvatarURL];
     
     
-//    [cell.photoImageView setImageWithURL:[NSURL URLWithString:photoImageURL] placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
+    [cell.photoImageView setImageWithURL:[NSURL URLWithString:photoImageURL] placeholderImage:[UIImage imageNamed:@"placeholder-background"]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
