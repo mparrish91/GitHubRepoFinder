@@ -1,5 +1,5 @@
 //
-//  GHErrorView.h
+//  GFErrorView.h
 //  GithubRepoFinder
 //
 //  Created by parry on 10/22/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GHErrorView : UIView
+@interface GFErrorView : UIView
 
 @end

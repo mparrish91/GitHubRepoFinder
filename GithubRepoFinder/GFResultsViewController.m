@@ -13,6 +13,8 @@
 #import "GFRepoTableViewCell.h"
 #import "GFRepo.h"
 #import "UIImageView+AFNetworking.h"
+#import "GFInfiniteScrollActivityView.h"
+#import "GFErrorView.h"
 
 
 @interface GFResultsViewController ()
@@ -24,12 +26,12 @@
 @property(nonatomic,strong) UIRefreshControl *refreshControl;
 @property(nonatomic,strong) UISearchBar *searchBar;
 
-//@property(nonatomic,strong) GHErrorView *errorView;
+@property(nonatomic,strong) GFErrorView *errorView;
 
 @property (nonatomic, strong) NSMutableArray * filteredRepos;
 @property (nonatomic, weak) NSArray * displayedItems;
 
-//@property(nonatomic,strong) GFInfiniteScrollActivityView *loadingMoreView;
+@property(nonatomic,strong) GFInfiniteScrollActivityView *loadingMoreView;
 
 
 @end
@@ -196,11 +198,11 @@
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.reposTableView.dragging) {
             self.isMoreDataLoading = true;
             
-            CGRect frame = CGRectMake(0, self.reposTableView.contentSize.height - self.tabBarController.tabBar.frame.size.height, self.reposTableView.bounds.size.width, FLInfiniteScrollActivityView.defaultHeight);
+            CGRect frame = CGRectMake(0, self.reposTableView.contentSize.height - self.tabBarController.tabBar.frame.size.height, self.reposTableView.bounds.size.width, GFInfiniteScrollActivityView.defaultHeight);
             self.loadingMoreView.frame = frame;
             [self.loadingMoreView startAnimating];
             
-            [self fetchMovies];
+            [self doSearch];
             
         }
     }
@@ -215,7 +217,7 @@
     
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view = view;
-    [view addSubview:self.moviesTableView];
+    [view addSubview:self.reposTableView];
     [view addSubview:self.errorView];
     
 }
@@ -228,11 +230,11 @@
     UILayoutGuide *margins = self.view.layoutMarginsGuide;
     
     
-    self.moviesTableView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.moviesTableView.leadingAnchor constraintEqualToAnchor:view.leadingAnchor].active = YES;
-    [self.moviesTableView.trailingAnchor constraintEqualToAnchor:view.trailingAnchor].active = YES;
-    [self.moviesTableView.topAnchor constraintEqualToAnchor:view.topAnchor].active = YES;
-    [self.moviesTableView.bottomAnchor constraintEqualToAnchor:view.bottomAnchor].active = YES;
+    self.reposTableView.translatesAutoresizingMaskIntoConstraints = false;
+    [self.reposTableView.leadingAnchor constraintEqualToAnchor:view.leadingAnchor].active = YES;
+    [self.reposTableView.trailingAnchor constraintEqualToAnchor:view.trailingAnchor].active = YES;
+    [self.reposTableView.topAnchor constraintEqualToAnchor:view.topAnchor].active = YES;
+    [self.reposTableView.bottomAnchor constraintEqualToAnchor:view.bottomAnchor].active = YES;
     
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
     

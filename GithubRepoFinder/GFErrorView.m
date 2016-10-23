@@ -1,15 +1,15 @@
 //
-//  GHErrorView.m
+//  GFErrorView.m
 //  GithubRepoFinder
 //
 //  Created by parry on 10/22/16.
 //  Copyright © 2016 parry. All rights reserved.
 //
 
-#import "GHErrorView.h"
+#import "GFErrorView.h"
 
 
-@interface GHErrorView ()
+@interface GFErrorView ()
 @property(strong,readwrite,nonatomic) UILabel *titleLabel;
 @property(strong,readwrite,nonatomic) UIImageView *errorImageView;
 
@@ -17,7 +17,7 @@
 @end
 
 
-@implementation GHErrorView
+@implementation GFErrorView
 
 
 - (instancetype)initWithFrame:(CGRect)frame
