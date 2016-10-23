@@ -30,17 +30,17 @@
         valuesForKeys[@"name"] = value;
     
     if ((value = dict[@"stargazers_count"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"overview"] = value;
+        valuesForKeys[@"stars"] = value;
     
     if ((value = dict[@"forks_count"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"releaseDate"] = value;
+        valuesForKeys[@"forks"] = value;
     
     if ((value = dict[@"description"]) && [value isKindOfClass:[NSString class]])
-        valuesForKeys[@"title"] = value;
+        valuesForKeys[@"repoDescription"] = value;
     
-    if ((value = dict[@"owner"]) && [value respondsToSelector:@selector(doubleValue)])
-        valuesForKeys[@"login"] = value;
-        valuesForKeys[@"avatar_url"] = value;
+    if ((value = dict[@"owner"]) && [value isKindOfClass:[NSString class]])
+        valuesForKeys[@"ownerHandle"] = value[@"login"];
+        valuesForKeys[@"ownerAvatarURL"] = value[@"avatar_url"];
 
     [self setValuesForKeysWithDictionary:valuesForKeys];
     
