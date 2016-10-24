@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "YPFilterTableViewCell.h"
+
 @protocol YPFiltersViewControllerDelegate;
 
 

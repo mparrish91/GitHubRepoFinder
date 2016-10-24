@@ -7,6 +7,10 @@
 //
 
 #import "GFSettingsViewController.h"
+#import "GFSettingTableViewCell.h"
+#import "GFStarSettingTableViewCell.h"
+#import "GFFilterSettingTableViewCell.h"
+
 
 @interface GFSettingsViewController ()
 
@@ -68,7 +72,10 @@
     
     //tableview
     NSString *cellIdentifier = @"cell";
-    [self.filtersTableView registerClass:[YPFilterTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self.filtersTableView registerClass:[GFSettingTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self.filtersTableView registerClass:[GFStarSettingTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self.filtersTableView registerClass:[GFFilterSettingTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+
     self.filtersTableView.delegate = self;
     self.filtersTableView.dataSource = self;
     
@@ -82,7 +89,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.filters.count;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -95,37 +102,13 @@
     
     if (section == 1)
     {
-        return self.distance.count;
+        return self.languages.count + 1;
         
-    }
-    if (section == 2)
-    {
-        return self.sort.count;
-    }
-    
-    if (section == 3)
-    {
-        return self.categories.count;
     }
     
     return 1;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    
-    headerView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
-    UILabel *categoryLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 120, 30)];
-    categoryLabel.font = [UIFont fontWithName:@"Avenir-Book-Bold" size:15];
-    categoryLabel.textColor = [UIColor blackColor];
-    
-    categoryLabel.text = [self.filters objectAtIndex:section];
-    
-    [headerView addSubview:categoryLabel];
-    
-    
-    return headerView;
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 40;
@@ -141,19 +124,33 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cell";
-    YPFilterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
     
-    if (cell == nil)
+    if (indexPath.section == 0)
     {
-        cell = [[YPFilterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        GFStarSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+        return cell;
     }
     
+    if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0)
+        {
+            GFSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+            return cell;
+        }
+        else {
+            GFFilterSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+            return cell;
+        }
+    }
+       UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
+
     return cell;
 }
 
 //This function is where all the magic happens
--(void) tableView:(UITableView *) tableView willDisplayCell:(YPFilterTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) tableView:(UITableView *) tableView willDisplayCell:(UITableView *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)
     {
@@ -280,3 +277,4 @@
 }
 
 
+@end
