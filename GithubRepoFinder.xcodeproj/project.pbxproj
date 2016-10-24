@@ -107,6 +107,8 @@
 				420C91EF1DBBDAC000C9F0E4 /* AppDelegate.m */,
 				420C91F41DBBDAC000C9F0E4 /* Main.storyboard */,
 				420C91F71DBBDAC000C9F0E4 /* Assets.xcassets */,
+				428C160C1DBEB788000A086E /* GFFilterSettingTableViewCell.h */,
+				428C160D1DBEB788000A086E /* GFFilterSettingTableViewCell.m */,
 				420C91F91DBBDAC000C9F0E4 /* LaunchScreen.storyboard */,
 				420C91FC1DBBDAC000C9F0E4 /* Info.plist */,
 				420C91EB1DBBDAC000C9F0E4 /* Supporting Files */,
@@ -157,8 +159,6 @@
 				428C16071DBEB637000A086E /* GFSettingTableViewCell.m */,
 				428C16091DBEB773000A086E /* GFStarSettingTableViewCell.h */,
 				428C160A1DBEB773000A086E /* GFStarSettingTableViewCell.m */,
-				428C160C1DBEB788000A086E /* GFFilterSettingTableViewCell.h */,
-				428C160D1DBEB788000A086E /* GFFilterSettingTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";

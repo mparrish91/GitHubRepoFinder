@@ -55,8 +55,8 @@
 
 -(void) onSwitchPressed {
     NSLog(@"switch pressed bro");
-    if ([self.delegate respondsToSelector:@selector(gfFilterSettingSwitchDidChange:value:)]) {
-        [self.delegate gfFilterSettingSwitchDidChange:self value:self.filterSwitch.on];
+    if ([self.delegate respondsToSelector:@selector(gfSettingCellSwitchDidChange:value:)]) {
+        [self.delegate gfSettingCellSwitchDidChange:self value:self.filterSwitch.on];
     }
     
 }

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol YPFilterTableViewCellDelegate;
+@protocol GFStarSettingTableViewCellDelegate;
 
 
 @interface GFStarSettingTableViewCell : UITableViewCell
@@ -17,7 +17,7 @@
 @property(strong,readwrite,nonatomic) UILabel *starsLabel;
 @property(strong,readwrite,nonatomic) UISlider *starSlider;
 
-@property(weak,nonatomic) id <YPFilterTableViewCellDelegate> delegate;
+@property(weak,nonatomic) id <GFStarSettingTableViewCellDelegate> delegate;
 
 
 @end
@@ -25,9 +25,9 @@
 
 
 
-@protocol YPFilterTableViewCellDelegate <NSObject>
+@protocol GFStarSettingTableViewCellDelegate <NSObject>
 @optional
-- (void)ypFilterCellSwitchDidChange:(YPFilterTableViewCell *)cell value: (BOOL)value;
+- (void)gfStarSettingLabelDidChange:(GFStarSettingTableViewCell *)cell value: (BOOL)value;
 
 @end
 

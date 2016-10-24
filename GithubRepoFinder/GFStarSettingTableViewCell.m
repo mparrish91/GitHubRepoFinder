@@ -73,8 +73,8 @@
     //-- Do further actions
     
     NSLog(@"switch pressed bro");
-    if ([self.delegate respondsToSelector:@selector(ypFilterCellSwitchDidChange:value:)]) {
-        [self.delegate ypFilterCellSwitchDidChange:self value:self.filterSwitch.on];
+    if ([self.delegate respondsToSelector:@selector(gfStarSettingLabelDidChange:value:)]) {
+        [self.delegate gfStarSettingLabelDidChange:self value:self.starsLabel.text];
     }
 }
 

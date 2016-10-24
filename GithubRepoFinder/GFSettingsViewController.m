@@ -131,19 +131,12 @@
         return cell;
     }
     
-    if (indexPath.section == 1)
+    if (indexPath.section != 0)
     {
-        if (indexPath.row == 0)
-        {
-            GFSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
-            return cell;
-        }
-        else {
-            GFFilterSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
-            return cell;
-        }
+        GFSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+        return cell;
     }
-       UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
 
     return cell;
@@ -152,40 +145,6 @@
 //This function is where all the magic happens
 -(void) tableView:(UITableView *) tableView willDisplayCell:(UITableView *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
-    {
-        cell.filterLabel.text = self.filters[0];
-        
-    }
-    
-    if (indexPath.section == 1)
-    {
-        cell.filterLabel.text = self.distance[indexPath.row];
-    }
-    if (indexPath.section == 2)
-    {
-        cell.filterLabel.text = self.sort[indexPath.row];
-    }
-    
-    if (indexPath.section == 3)
-    {
-        NSDictionary *categoryName = [self.categories objectAtIndex:indexPath.row];
-        cell.filterLabel.text = categoryName[@"name"];
-    }
-    
-    
-    cell.delegate = self;
-    NSString *convertedIndexPath = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
-    if (self.switchStates[convertedIndexPath] != nil)
-    {
-        cell.filterSwitch.on = self.switchStates[convertedIndexPath];
-        
-    }
-    else{
-        cell.filterSwitch.on = false;
-        
-    }
-    
     
 }
 
@@ -202,7 +161,7 @@
 
 
 
-- (void)gfFilterSettingSwitchDidChange:(GFFilterSettingTableViewCell *)cell value: (BOOL)value;
+- (void)gfSettingCellSwitchDidChange:(GFFilterSettingTableViewCell *)cell value: (BOOL)value;
 {
     NSIndexPath *indexPath = [self.filtersTableView indexPathForCell:cell];
     
@@ -271,9 +230,9 @@
         filters[@"categories"] = selectedCategories;
     }
     
-    if ([self.delegate respondsToSelector:@selector(ypFiltersViewControllerDidUpdateFilters:filters:)]) {
-        [self.delegate ypFiltersViewControllerDidUpdateFilters:self filters:filters];
-    }
+//    if ([self.delegate respondsToSelector:@selector(ypFiltersViewControllerDidUpdateFilters:filters:)]) {
+//        [self.delegate ypFiltersViewControllerDidUpdateFilters:self filters:filters];
+//    }
     
 }
 

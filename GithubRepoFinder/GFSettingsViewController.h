@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YPFilterTableViewCell.h"
+#import "GFSettingTableViewCell.h"
+#import "GFStarSettingTableViewCell.h"
+
 
 @protocol YPFiltersViewControllerDelegate;
 
 
-@interface GFSettingsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, YPFilterTableViewCellDelegate>
+@interface GFSettingsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, GFSettingTableViewCellDelegate>
 
 @property(weak,nonatomic) id <YPFiltersViewControllerDelegate> delegate;
 
@@ -20,9 +22,9 @@
 
 
 
-@protocol YPFiltersViewControllerDelegate <NSObject>
-@optional
-- (void)ypFiltersViewControllerDidUpdateFilters:(YPFilterViewController *)filtersViewController filters:(NSDictionary *)filters;
-
-@end
+//@protocol YPFiltersViewControllerDelegate <NSObject>
+//@optional
+//- (void)ypFiltersViewControllerDidUpdateFilters:(YPFilterViewController *)filtersViewController filters:(NSDictionary *)filters;
+//
+//@end
 
