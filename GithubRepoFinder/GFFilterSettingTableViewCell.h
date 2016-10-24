@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol YPFilterTableViewCellDelegate;
+@protocol GFFilterSettingTableViewCellDelegate;
 
 
 @interface GFFilterSettingTableViewCell : UITableViewCell
@@ -16,7 +16,7 @@
 @property(strong,readwrite,nonatomic) UILabel *filterLabel;
 @property(strong,readwrite,nonatomic) UISwitch *filterSwitch;
 
-@property(weak,nonatomic) id <YPFilterTableViewCellDelegate> delegate;
+@property(weak,nonatomic) id <GFFilterSettingTableViewCellDelegate> delegate;
 
 
 @end
@@ -24,9 +24,9 @@
 
 
 
-@protocol YPFilterTableViewCellDelegate <NSObject>
+@protocol GFFilterSettingTableViewCellDelegate <NSObject>
 @optional
-- (void)ypFilterCellSwitchDidChange:(YPFilterTableViewCell *)cell value: (BOOL)value;
+- (void)gfFilterSettingSwitchDidChange:(GFFilterSettingTableViewCell *)cell value: (BOOL)value;
 
 @end
 

@@ -202,10 +202,11 @@
 
 
 
-- (void)ypFilterCellSwitchDidChange:(YPFilterTableViewCell *)cell value: (BOOL)value;
+- (void)gfFilterSettingSwitchDidChange:(GFFilterSettingTableViewCell *)cell value: (BOOL)value;
 {
     NSIndexPath *indexPath = [self.filtersTableView indexPathForCell:cell];
     
+    //show missing rows
     NSLog(@"filters got the switch event");
     NSString *convertedIndexPath = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
     self.switchStates[convertedIndexPath] = [NSNumber numberWithBool:value];
