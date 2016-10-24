@@ -44,13 +44,15 @@
     self.filterLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.filterLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
     [self.filterLabel.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
-    self.filterLabel.font = [UIFont fontWithName:@"Avenir-Book" size:11];
+    self.filterLabel.font = [UIFont fontWithName:@"Avenir-Book" size:14];
+    self.filterLabel.text = @"Minimum Stars";
+
     
     self.starSlider.translatesAutoresizingMaskIntoConstraints = false;
     [self.starSlider.centerXAnchor constraintEqualToAnchor:margins.centerXAnchor].active = YES;
     [self.starSlider.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
-    [self.filterLabel.leadingAnchor constraintEqualToAnchor:self.filterLabel.trailingAnchor].active = YES;
-    [self.filterLabel.trailingAnchor constraintEqualToAnchor:self.starsLabel.leadingAnchor].active = YES;
+    [self.starSlider.leadingAnchor constraintEqualToAnchor:self.filterLabel.trailingAnchor constant:20].active = YES;
+    [self.starSlider.trailingAnchor constraintEqualToAnchor:self.starsLabel.leadingAnchor].active = YES;
     
     self.starSlider.minimumValue = 0.0;
     self.starSlider.maximumValue = 1000.0;
@@ -61,7 +63,8 @@
     self.starsLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.starsLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.starsLabel.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
-    
+    self.starsLabel.text = @"0";
+
     
     
 }
@@ -70,6 +73,9 @@
 {
     UISlider *slider = (UISlider*)sender;
     float value = slider.value;
+    NSString *strValue = [NSString stringWithFormat:@"%.3f", value];
+    self.starsLabel.text = strValue;
+
     //-- Do further actions
     
     NSLog(@"switch pressed bro");

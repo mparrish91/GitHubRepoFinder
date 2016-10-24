@@ -9,7 +9,6 @@
 #import "GFSettingsViewController.h"
 #import "GFSettingTableViewCell.h"
 #import "GFStarSettingTableViewCell.h"
-#import "GFFilterSettingTableViewCell.h"
 
 
 @interface GFSettingsViewController ()
@@ -72,9 +71,10 @@
     
     //tableview
     NSString *cellIdentifier = @"cell";
+    NSString *cellIdentifier2 = @"cell2";
+
     [self.filtersTableView registerClass:[GFSettingTableViewCell class] forCellReuseIdentifier:cellIdentifier];
-    [self.filtersTableView registerClass:[GFStarSettingTableViewCell class] forCellReuseIdentifier:cellIdentifier];
-    [self.filtersTableView registerClass:[GFFilterSettingTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self.filtersTableView registerClass:[GFStarSettingTableViewCell class] forCellReuseIdentifier:cellIdentifier2];
 
     self.filtersTableView.delegate = self;
     self.filtersTableView.dataSource = self;
@@ -124,10 +124,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cell";
-    
+    static NSString *CellIdentifier2 = @"cell2";
+
     if (indexPath.section == 0)
     {
-        GFStarSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+        GFStarSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2 forIndexPath:indexPath] ;
         return cell;
     }
     
@@ -161,17 +162,17 @@
 
 
 
-- (void)gfSettingCellSwitchDidChange:(GFFilterSettingTableViewCell *)cell value: (BOOL)value;
-{
-    NSIndexPath *indexPath = [self.filtersTableView indexPathForCell:cell];
-    
-    //show missing rows
-    NSLog(@"filters got the switch event");
-    NSString *convertedIndexPath = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
-    self.switchStates[convertedIndexPath] = [NSNumber numberWithBool:value];
-    NSLog(@"filters got the switch event");
-    
-}
+//- (void)gfSettingCellSwitchDidChange:(GFFilterSettingTableViewCell *)cell value: (BOOL)value;
+//{
+//    NSIndexPath *indexPath = [self.filtersTableView indexPathForCell:cell];
+//    
+//    //show missing rows
+//    NSLog(@"filters got the switch event");
+//    NSString *convertedIndexPath = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+//    self.switchStates[convertedIndexPath] = [NSNumber numberWithBool:value];
+//    NSLog(@"filters got the switch event");
+//    
+//}
 
 
 - (void)loadView
