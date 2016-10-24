@@ -15,6 +15,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "GFInfiniteScrollActivityView.h"
 #import "GFErrorView.h"
+#import "GFSettingsViewController.h"
 
 
 @interface GFResultsViewController ()
@@ -86,7 +87,7 @@
     self.reposTableView.estimatedRowHeight = 100;
     self.reposTableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings"  style:UIBarButtonItemStylePlain target:self action:@selector(refreshTable)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings"  style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButtonPressed)];
 
     [self setConstraints];
     [self doSearch];
@@ -330,5 +331,15 @@
 }
 
 
+
+- (void)onSettingsButtonPressed
+{
+    GFSettingsViewController *settingsVC = [[GFSettingsViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:settingsVC];
+    
+    [self presentViewController:nav animated:true completion:nil];
+    settingsVC.delegate = self;
+
+}
 
 @end

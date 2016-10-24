@@ -16,6 +16,10 @@
 		420C920A1DBBDB4600C9F0E4 /* GFRepoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420C92091DBBDB4600C9F0E4 /* GFRepoTableViewCell.m */; };
 		420C920D1DBBDB5600C9F0E4 /* GFRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 420C920C1DBBDB5600C9F0E4 /* GFRepo.m */; };
 		420C92101DBBDB7C00C9F0E4 /* GFRepoSearchSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 420C920F1DBBDB7C00C9F0E4 /* GFRepoSearchSettings.m */; };
+		428C16051DBEB5D6000A086E /* GFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 428C16041DBEB5D6000A086E /* GFSettingsViewController.m */; };
+		428C16081DBEB637000A086E /* GFSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 428C16071DBEB637000A086E /* GFSettingTableViewCell.m */; };
+		428C160B1DBEB773000A086E /* GFStarSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 428C160A1DBEB773000A086E /* GFStarSettingTableViewCell.m */; };
+		428C160E1DBEB788000A086E /* GFFilterSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 428C160D1DBEB788000A086E /* GFFilterSettingTableViewCell.m */; };
 		42F04C2C1DBC50F700092F1C /* GFInfiniteScrollActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F04C2B1DBC50F700092F1C /* GFInfiniteScrollActivityView.m */; };
 		42F04C2F1DBC518D00092F1C /* GFErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F04C2E1DBC518D00092F1C /* GFErrorView.m */; };
 		446473C0A95D1F8C042EB7C3 /* Pods_GithubRepoFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 109FE2E9BCEEE3DB61F4AF75 /* Pods_GithubRepoFinder.framework */; };
@@ -40,6 +44,14 @@
 		420C920C1DBBDB5600C9F0E4 /* GFRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GFRepo.m; path = ../GFRepo.m; sourceTree = "<group>"; };
 		420C920E1DBBDB7C00C9F0E4 /* GFRepoSearchSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GFRepoSearchSettings.h; path = ../GFRepoSearchSettings.h; sourceTree = "<group>"; };
 		420C920F1DBBDB7C00C9F0E4 /* GFRepoSearchSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GFRepoSearchSettings.m; path = ../GFRepoSearchSettings.m; sourceTree = "<group>"; };
+		428C16031DBEB5D6000A086E /* GFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFSettingsViewController.h; sourceTree = "<group>"; };
+		428C16041DBEB5D6000A086E /* GFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFSettingsViewController.m; sourceTree = "<group>"; };
+		428C16061DBEB637000A086E /* GFSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFSettingTableViewCell.h; sourceTree = "<group>"; };
+		428C16071DBEB637000A086E /* GFSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFSettingTableViewCell.m; sourceTree = "<group>"; };
+		428C16091DBEB773000A086E /* GFStarSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFStarSettingTableViewCell.h; sourceTree = "<group>"; };
+		428C160A1DBEB773000A086E /* GFStarSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFStarSettingTableViewCell.m; sourceTree = "<group>"; };
+		428C160C1DBEB788000A086E /* GFFilterSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFFilterSettingTableViewCell.h; sourceTree = "<group>"; };
+		428C160D1DBEB788000A086E /* GFFilterSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFFilterSettingTableViewCell.m; sourceTree = "<group>"; };
 		42F04C2A1DBC50F700092F1C /* GFInfiniteScrollActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFInfiniteScrollActivityView.h; sourceTree = "<group>"; };
 		42F04C2B1DBC50F700092F1C /* GFInfiniteScrollActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFInfiniteScrollActivityView.m; sourceTree = "<group>"; };
 		42F04C2D1DBC518D00092F1C /* GFErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFErrorView.h; sourceTree = "<group>"; };
@@ -126,6 +138,8 @@
 			children = (
 				420C92051DBBDB1200C9F0E4 /* GFResultsViewController.h */,
 				420C92061DBBDB1200C9F0E4 /* GFResultsViewController.m */,
+				428C16031DBEB5D6000A086E /* GFSettingsViewController.h */,
+				428C16041DBEB5D6000A086E /* GFSettingsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -139,6 +153,12 @@
 				42F04C2B1DBC50F700092F1C /* GFInfiniteScrollActivityView.m */,
 				42F04C2D1DBC518D00092F1C /* GFErrorView.h */,
 				42F04C2E1DBC518D00092F1C /* GFErrorView.m */,
+				428C16061DBEB637000A086E /* GFSettingTableViewCell.h */,
+				428C16071DBEB637000A086E /* GFSettingTableViewCell.m */,
+				428C16091DBEB773000A086E /* GFStarSettingTableViewCell.h */,
+				428C160A1DBEB773000A086E /* GFStarSettingTableViewCell.m */,
+				428C160C1DBEB788000A086E /* GFFilterSettingTableViewCell.h */,
+				428C160D1DBEB788000A086E /* GFFilterSettingTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -275,12 +295,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				420C92101DBBDB7C00C9F0E4 /* GFRepoSearchSettings.m in Sources */,
+				428C160E1DBEB788000A086E /* GFFilterSettingTableViewCell.m in Sources */,
 				420C920D1DBBDB5600C9F0E4 /* GFRepo.m in Sources */,
+				428C16051DBEB5D6000A086E /* GFSettingsViewController.m in Sources */,
 				420C920A1DBBDB4600C9F0E4 /* GFRepoTableViewCell.m in Sources */,
 				420C91F01DBBDAC000C9F0E4 /* AppDelegate.m in Sources */,
 				42F04C2F1DBC518D00092F1C /* GFErrorView.m in Sources */,
 				420C92071DBBDB1200C9F0E4 /* GFResultsViewController.m in Sources */,
+				428C16081DBEB637000A086E /* GFSettingTableViewCell.m in Sources */,
 				42F04C2C1DBC50F700092F1C /* GFInfiniteScrollActivityView.m in Sources */,
+				428C160B1DBEB773000A086E /* GFStarSettingTableViewCell.m in Sources */,
 				420C91ED1DBBDAC000C9F0E4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
