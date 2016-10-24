@@ -102,7 +102,7 @@
     
     if (section == 1)
     {
-        return self.languages.count + 1;
+        return self.languages.count;
         
     }
     
@@ -135,6 +135,9 @@
     if (indexPath.section != 0)
     {
         GFSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+        NSLog(@"%ld", (long)indexPath.row);
+        cell.filterLabel.text = self.languages[indexPath.row];
+        
         return cell;
     }
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
