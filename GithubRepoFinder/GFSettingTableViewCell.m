@@ -17,18 +17,16 @@
     
     
     self.filterLabel  = [[UILabel alloc]init];
-    self.starsLabel = [[UILabel alloc]init];
-    self.starSlider = [[UISlider alloc]init];
-
+    self.filterSwitch = [[UISwitch alloc]init];
+    
     
     if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]))
         return nil;
     
     [[self contentView]addSubview:self.filterLabel];
-    [[self contentView]addSubview:self.starSlider];
-    [[self contentView]addSubview:self.starsLabel];
-
-    [self.starSlider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
+    [[self contentView]addSubview:self.filterSwitch];
+    
+    [self.filterSwitch addTarget: self action: @selector(onSwitchPressed) forControlEvents: UIControlEventValueChanged];
     
     
     
@@ -45,37 +43,22 @@
     [self.filterLabel.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
     self.filterLabel.font = [UIFont fontWithName:@"Avenir-Book" size:11];
     
-    self.starSlider.translatesAutoresizingMaskIntoConstraints = false;
-    [self.starSlider.centerXAnchor constraintEqualToAnchor:margins.centerXAnchor].active = YES;
-    [self.starSlider.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
-    [self.filterLabel.leadingAnchor constraintEqualToAnchor:self.filterLabel.trailingAnchor].active = YES;
-    [self.filterLabel.trailingAnchor constraintEqualToAnchor:self.starsLabel.leadingAnchor].active = YES;
-
-    self.starSlider.minimumValue = 0.0;
-    self.starSlider.maximumValue = 1000.0;
-    self.starSlider.continuous = YES;
-    self.starSlider.value = 25.0;
+    
+    self.filterSwitch.translatesAutoresizingMaskIntoConstraints = false;
+    [self.filterSwitch.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.filterSwitch.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
     
     
-    self.starsLabel.translatesAutoresizingMaskIntoConstraints = false;
-    [self.starsLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.starsLabel.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
     
     
-
 }
 
--(void)sliderAction:(id)sender
-{
-    UISlider *slider = (UISlider*)sender;
-    float value = slider.value;
-    //-- Do further actions
-    
+-(void) onSwitchPressed {
     NSLog(@"switch pressed bro");
-    if ([self.delegate respondsToSelector:@selector(ypFilterCellSwitchDidChange:value:)]) {
-        [self.delegate ypFilterCellSwitchDidChange:self value:self.filterSwitch.on];
+    if ([self.delegate respondsToSelector:@selector(gfFilterSettingSwitchDidChange:value:)]) {
+        [self.delegate gfFilterSettingSwitchDidChange:self value:self.filterSwitch.on];
     }
+    
 }
-
 
 @end

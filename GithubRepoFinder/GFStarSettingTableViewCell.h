@@ -14,7 +14,8 @@
 @interface GFStarSettingTableViewCell : UITableViewCell
 
 @property(strong,readwrite,nonatomic) UILabel *filterLabel;
-@property(strong,readwrite,nonatomic) UISwitch *filterSwitch;
+@property(strong,readwrite,nonatomic) UILabel *starsLabel;
+@property(strong,readwrite,nonatomic) UISlider *starSlider;
 
 @property(weak,nonatomic) id <YPFilterTableViewCellDelegate> delegate;
 
@@ -29,4 +30,5 @@
 - (void)ypFilterCellSwitchDidChange:(YPFilterTableViewCell *)cell value: (BOOL)value;
 
 @end
+
 
