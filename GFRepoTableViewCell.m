@@ -70,13 +70,13 @@
     self.titleView.translatesAutoresizingMaskIntoConstraints = false;
     [self.titleView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
     [self.titleView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.titleView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor].active = YES;
+    [self.titleView.bottomAnchor constraintEqualToAnchor:self.nameView.topAnchor constant:5].active = YES;
     [self.titleView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
 
     self.nameView.translatesAutoresizingMaskIntoConstraints = false;
     [self.nameView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
     [self.nameView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-    [self.nameView.bottomAnchor constraintEqualToAnchor:self.descriptionView.topAnchor].active = YES;
+    [self.nameView.bottomAnchor constraintEqualToAnchor:self.descriptionView.topAnchor constant:-3].active = YES;
     
     [self.nameView.heightAnchor constraintEqualToConstant:15].active = YES;
 
@@ -177,7 +177,7 @@
     
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = false;
     [self.photoImageView.widthAnchor constraintEqualToAnchor:self.photoImageView.heightAnchor].active = YES;
-    [self.photoImageView.widthAnchor constraintEqualToConstant:40].active = YES;
+    [self.photoImageView.widthAnchor constraintEqualToConstant:35].active = YES;
     [self.photoImageView.centerYAnchor constraintEqualToAnchor:self.descriptionView.centerYAnchor].active = YES;
     [self.photoImageView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
     self.photoImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -196,9 +196,9 @@
     self.descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     
     
-    self.titleView.backgroundColor = [UIColor yellowColor];
-    self.nameView.backgroundColor = [UIColor redColor];
-    self.descriptionView.backgroundColor = [UIColor greenColor];
+//    self.titleView.backgroundColor = [UIColor yellowColor];
+//    self.nameView.backgroundColor = [UIColor redColor];
+//    self.descriptionView.backgroundColor = [UIColor greenColor];
 
 }
 
