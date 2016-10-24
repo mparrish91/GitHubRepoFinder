@@ -49,12 +49,14 @@
 
     
     self.starSlider.translatesAutoresizingMaskIntoConstraints = false;
-    [self.starSlider.centerXAnchor constraintEqualToAnchor:margins.centerXAnchor].active = YES;
+    [self.starSlider.centerXAnchor constraintEqualToAnchor:margins.centerXAnchor constant:20].active = YES;
     [self.starSlider.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
-    [self.starSlider.leadingAnchor constraintEqualToAnchor:self.filterLabel.trailingAnchor constant:20].active = YES;
-    [self.starSlider.trailingAnchor constraintEqualToAnchor:self.starsLabel.leadingAnchor].active = YES;
     
+    [self.starSlider.widthAnchor constraintEqualToConstant:150].active = YES;
+
     self.starSlider.minimumValue = 0.0;
+    self.starSlider.maximumValue = 1000.0;
+
     self.starSlider.maximumValue = 1000.0;
     self.starSlider.continuous = YES;
     self.starSlider.value = 25.0;
@@ -71,9 +73,14 @@
 
 -(void)sliderAction:(id)sender
 {
+    int sliderValue;
+    sliderValue = lroundf(self.starSlider.value);
+    [self.starSlider setValue:sliderValue animated:YES];
+    
+    
     UISlider *slider = (UISlider*)sender;
     float value = slider.value;
-    NSString *strValue = [NSString stringWithFormat:@"%.3f", value];
+    NSString *strValue = [NSString stringWithFormat:@"%.0f", value];
     self.starsLabel.text = strValue;
 
     //-- Do further actions
