@@ -26,6 +26,7 @@
 @property (nonatomic, strong) NSArray * sort;
 @property (nonatomic, strong) NSArray * languages;
 
+@property (nonatomic, assign) BOOL isSubMenuExpanded;
 
 
 @end
@@ -88,6 +89,11 @@
 
 
 #pragma mark - TableView
+
+- (void)updateViewDimensions
+{
+    self.filtersTableView.frame = CGRectMake(0, 40, 320, 550);
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
