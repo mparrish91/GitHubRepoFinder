@@ -252,7 +252,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 
-    if ([self.delegate respondsToSelector:@selector(gfSettingsViewControllerDidUpdateFilters:filters::)]) {
+    if ([self.delegate respondsToSelector:@selector(gfSettingsViewControllerDidUpdateFilters:searchString:)]) {
         [self.delegate gfSettingsViewControllerDidUpdateFilters:self searchString:self.searchSettings.searchString ];
     }
     

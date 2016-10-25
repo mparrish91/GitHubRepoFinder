@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GFSettingsViewController.h"
 
-@interface GFResultsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UISearchBarDelegate>
+@interface GFResultsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UISearchBarDelegate, GFSettingsViewControllerDelegate>
 
 @end

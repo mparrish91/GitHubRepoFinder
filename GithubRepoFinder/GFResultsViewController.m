@@ -362,7 +362,7 @@
 
 - (void)gfSettingsViewControllerDidUpdateFilters:(GFSettingsViewController *)filtersViewController searchString:(NSString *)searchString{
 
-    self.searchSettings.searchString = searchString;
+    self.searchSettings.searchString = @"Java";
     
     [self doSearch];
 }
