@@ -106,8 +106,8 @@
     if (settings.searchString != nil) {
           q = [q stringByAppendingString:settings.searchString];
     }
- 
-    q = [q stringByAppendingString:[NSString stringWithFormat:@"stars:>%d", settings.minStars]];
+    
+    q = [[q stringByAppendingString:@" "] stringByAppendingString:[NSString stringWithFormat:@"stars:>%d", settings.minStars]];
     params[@"q"] = q;
     params[@"sort"] = @"stars";
     params[@"order"] = @"desc";

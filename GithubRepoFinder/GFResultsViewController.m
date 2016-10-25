@@ -34,6 +34,7 @@
 
 @property(nonatomic,strong) GFInfiniteScrollActivityView *loadingMoreView;
 
+@property(nonatomic,strong) GFRepoSearchSettings *searchSettings;
 
 @end
 
@@ -46,7 +47,8 @@
 {
     self.reposTableView = [[UITableView alloc]init];
     self.searchBar = [[UISearchBar alloc] init];
-    
+    self.searchSettings = [[GFRepoSearchSettings alloc]init];
+
     self.errorView = [[GFErrorView alloc]init];
     self.repos = [[NSMutableArray alloc] init];
     self.filteredRepos = [[NSMutableArray alloc] init];
@@ -98,10 +100,7 @@
 - (void)doSearch {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    GFRepoSearchSettings *searchSettings = [[GFRepoSearchSettings alloc]init];
-    
-    
-    [GFRepo fetchReposWithSettings:searchSettings completion:^(NSArray *objects, NSError *error)
+    [GFRepo fetchReposWithSettings:self.searchSettings completion:^(NSArray *objects, NSError *error)
      {
          if (error)
          {
@@ -112,7 +111,7 @@
              [self hideErrorView:self.errorView];
              
          }
-         [self.repos addObjectsFromArray:objects];
+         self.repos = objects;
          self.displayedItems = self.repos;
          
     
@@ -318,17 +317,50 @@
     
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+// MARK: SearchBar methods
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar:(UISearchBar *)searchBar
 {
-    [self.reposTableView setContentOffset:CGPointMake(0, 0)];
+    [self.searchBar setShowsCancelButton:true animated:true];
+    return true;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
+    [self.searchBar setShowsCancelButton:false animated:true];
+    return true;
     
 }
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    NSLog(@"Cancel");
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self.reposTableView setContentOffset:CGPointMake(0, 0)];
+    [self handleSearch:searchBar];
     
 }
+
+- (void)handleSearch:(UISearchBar *)searchBar {
+    
+    //check what was passed as the query String and get rid of the keyboard
+    NSLog(@"User searched for %@", searchBar.text);
+    NSString *queryString = searchBar.text;
+    [searchBar resignFirstResponder];
+    
+    self.searchSettings.searchString = self.searchBar.text;
+    
+    [self doSearch];
+
+
+}
+
+
+
+
 
 
 
