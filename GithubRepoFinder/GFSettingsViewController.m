@@ -110,7 +110,10 @@
     
     if (section == 1)
     {
-        return self.languages.count+1;
+        if (self.isSubMenuExpanded)
+    {
+        
+        return self.languages.count+1;    }
         
     }
     
@@ -174,11 +177,16 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
     
-    //    Business *business = [self.displayedItems objectAtIndex:indexPath.row];
-    
-    //    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithMovie:movie];
-    //    //    FLMovieDetailViewController *detailVC = [[FLMovieDetailViewController alloc]initWithURL:[movie posterPath]];
-    //    [self.navigationController pushViewController:detailVC animated:true];
+    if (indexPath.section == 1)
+    {
+        if(indexPath.row == 0)
+        {
+            // Change status of a cell reload table
+            
+        self.isSubMenuExpanded = !self.isSubMenuExpanded;
+        [self.filtersTableView reloadData];
+        }
+    }
 }
 
 
