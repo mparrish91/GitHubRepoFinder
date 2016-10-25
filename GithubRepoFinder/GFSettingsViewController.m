@@ -78,7 +78,9 @@
 
     self.filtersTableView.delegate = self;
     self.filtersTableView.dataSource = self;
-    
+    self.filtersTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.filtersTableView.tableFooterView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.7];
+
     [self setConstraints];
     
 }
@@ -102,7 +104,7 @@
     
     if (section == 1)
     {
-        return self.languages.count;
+        return self.languages.count+1;
         
     }
     
@@ -134,12 +136,22 @@
     
     if (indexPath.section != 0)
     {
+        if (indexPath.row == 0)
+        {
+            GFSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+            NSLog(@"%ld", (long)indexPath.row);
+            cell.filterLabel.text = @"Filter by Language";
+            return cell;
+
+        }
+        else
+        {
         GFSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
         NSLog(@"%ld", (long)indexPath.row);
-        cell.filterLabel.text = self.languages[indexPath.row];
-        
-        return cell;
-    }
+        cell.filterLabel.text = self.languages[indexPath.row -1];
+            return cell;
+        }
+            }
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
 

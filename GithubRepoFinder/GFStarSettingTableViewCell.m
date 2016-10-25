@@ -65,6 +65,7 @@
     self.starsLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.starsLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
     [self.starsLabel.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
+    
     self.starsLabel.text = @"0";
 
     
