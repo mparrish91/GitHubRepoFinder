@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GFResultsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UISearchBarDelegate, UISearchResultsUpdating>
+@interface GFResultsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UISearchBarDelegate>
 
 @end

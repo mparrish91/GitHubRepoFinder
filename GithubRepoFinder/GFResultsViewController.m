@@ -360,7 +360,12 @@
 
 
 
+- (void)gfSettingsViewControllerDidUpdateFilters:(GFSettingsViewController *)filtersViewController searchString:(NSString *)searchString{
 
+    self.searchSettings.searchString = searchString;
+    
+    [self doSearch];
+}
 
 
 
@@ -372,6 +377,7 @@
     [self presentViewController:nav animated:true completion:nil];
     settingsVC.delegate = self;
 
+    
 }
 
 @end

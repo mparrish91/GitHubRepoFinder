@@ -9,6 +9,7 @@
 #import "GFSettingsViewController.h"
 #import "GFSettingTableViewCell.h"
 #import "GFStarSettingTableViewCell.h"
+#import "GFRepoSearchSettings.h"
 
 
 @interface GFSettingsViewController ()
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) NSArray * languages;
 
 @property (nonatomic, assign) BOOL isSubMenuExpanded;
+@property(nonatomic,strong) GFRepoSearchSettings *searchSettings;
 
 
 @end
@@ -40,6 +42,7 @@
 {
     self.filtersTableView = [[UITableView alloc]init];
     self.switchStates = [[NSMutableDictionary alloc]init];
+    self.searchSettings = [[GFRepoSearchSettings alloc]init];
 
     self.languages = @[ @"Java", @"JavaScript",@"Objective-C",@"Python", @"Ruby", @"Swift"];
 
@@ -188,6 +191,11 @@
         [self.filtersTableView reloadData];
         }
     }
+    static NSString *CellIdentifier = @"cell";
+
+    GFSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath];
+    self.searchSettings.searchString = cell.textLabel.text;
+
 }
 
 
@@ -243,27 +251,10 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    NSMutableDictionary *filters = [[NSMutableDictionary alloc]init];
-    NSMutableArray *selectedCategories = [[NSMutableArray alloc]init];
-    
-    for (NSString *row in self.switchStates) {
-        NSNumber *state = [self.switchStates objectForKey: row];
-        if ([state  isEqualToNumber: [NSNumber numberWithInt:1]])
-        {
-            NSDictionary *category = self.categories[[row integerValue]];
-            NSString *code = category[@"code"];
-            [selectedCategories addObject:code];
-        }
+
+    if ([self.delegate respondsToSelector:@selector(gfSettingsViewControllerDidUpdateFilters:filters::)]) {
+        [self.delegate gfSettingsViewControllerDidUpdateFilters:self searchString:self.searchSettings.searchString ];
     }
-    
-    if (selectedCategories.count > 0)
-    {
-        filters[@"categories"] = selectedCategories;
-    }
-    
-//    if ([self.delegate respondsToSelector:@selector(ypFiltersViewControllerDidUpdateFilters:filters:)]) {
-//        [self.delegate ypFiltersViewControllerDidUpdateFilters:self filters:filters];
-//    }
     
 }
 

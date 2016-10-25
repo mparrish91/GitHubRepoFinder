@@ -11,20 +11,20 @@
 #import "GFStarSettingTableViewCell.h"
 
 
-@protocol YPFiltersViewControllerDelegate;
+@protocol GFSettingsViewControllerDelegate;
 
 
-@interface GFSettingsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, GFSettingTableViewCellDelegate>
+@interface GFSettingsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property(weak,nonatomic) id <YPFiltersViewControllerDelegate> delegate;
+@property(weak,nonatomic) id <GFSettingsViewControllerDelegate> delegate;
 
 @end
 
 
 
-//@protocol YPFiltersViewControllerDelegate <NSObject>
-//@optional
-//- (void)ypFiltersViewControllerDidUpdateFilters:(YPFilterViewController *)filtersViewController filters:(NSDictionary *)filters;
-//
-//@end
+@protocol GFSettingsViewControllerDelegate <NSObject>
+@optional
+- (void)gfSettingsViewControllerDidUpdateFilters:(GFSettingsViewController *)filtersViewController searchString:(NSString *)searchString;
+
+@end
 
