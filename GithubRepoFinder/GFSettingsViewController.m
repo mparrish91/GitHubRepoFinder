@@ -150,6 +150,7 @@
             GFSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
             NSLog(@"%ld", (long)indexPath.row);
             cell.filterLabel.text = @"Filter by Language";
+            cell.filterSwitch.hidden = true;
             return cell;
 
         }
